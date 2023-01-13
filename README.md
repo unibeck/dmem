@@ -14,18 +14,28 @@ more to it, which I implore you to read in `index.ts`.
 ### Prerequisites
 All resources used to run this are free, here is what you need:
 - Twitter Dev account and API keys
+- Mem account, with your Twitter bot account connected to your mem account (https://mem.ai/flows/mem-it-for-twitter)
 - Cloudflare account and API keys
 - `npm` installed on your machine
 
 ### Initialisation
+1) Install dependencies
 ```bash
-#Install dependencies
 npm i
+```
 
-#Create the KV namespaces. Update wrangler.toml with the namespace IDs returned here
+2) Update `wrangler.toml` with:
+   - your Cloudflare account ID (`account_id`)
+   - personal Twitter username (`username`)
+
+3) Create the KV namespaces. Update wrangler.toml with the namespace IDs returned here
+```bash
 wrangler kv:namespace create "DMEM_KV"
 wrangler kv:namespace create "DMEM_KV" --preview
+```
 
+4) Added you twitter secret to Cloudflare
+```bash
 wrangler secret put TWITTER_BEARER_TOKEN
 ```
 

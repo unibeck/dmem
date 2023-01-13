@@ -8,14 +8,20 @@ kv_namespaces = [
     { binding = "DMEM_KV", id = "9d2f67f046f846c2a3f9d3e4c84e5ac7", preview_id = "2be5d999cebc441fac6036b7075285c1" }
 ]
 
-# scheduled worker only, so no worker dev deployment is needed
+node_compat = true
+#Scheduled worker only, so no worker.dev deployment is needed
 workers_dev = false
-
 send_metrics = false
 
 [triggers]
 #Every five (5) minutes
 crons = [ "*/5 * * * *" ]
+
+[vars]
+USERNAME = "rajonbeckman"
+#https://mem.ai/flows/mem-it-for-twitter
+MEM_IT_SIGNATURE = "@memdotai mem it"
+LAST_KNOWN_DM_DATE_KEY = "LAST_KNOWN_DM_DATE"
 
 # Via `wrangler publish --env production`
 #[env.production]
