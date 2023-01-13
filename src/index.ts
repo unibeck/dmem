@@ -3,6 +3,7 @@ import {DMEventV2} from "twitter-api-v2/dist/cjs/types/v2/dm.v2.types";
 
 export interface Env {
     DMEM_KV: KVNamespace
+    TWITTER_BEARER_TOKEN: string
 }
 
 // https://mem.ai/flows/mem-it-for-twitter
@@ -20,11 +21,12 @@ async function tweetMemIt(twitterClient: TwitterApi, dm: DMEventV2) {
 }
 
 async function respondToDMs(event: Event, env: Env) {
-    const twitterClient = new TwitterApi('');
+    const twitterClient = new TwitterApi(env.TWITTER_BEARER_TOKEN);
 
     //Get participant id from twitter handle
     const user = await twitterClient.v2.userByUsername(USERNAME)
     const participantId = user.data.id
+    console.log("participantId", participantId)
 
     //Get the latest DMs and sort them
     const dms = await twitterClient.v2.listDmEventsWithParticipant(participantId, {max_results: 10});
@@ -48,6 +50,9 @@ async function respondToDMs(event: Event, env: Env) {
             newestDMDate = dmDate
         }
     }
+    console.log("sortedDMs.length", sortedDMs.length)
+    console.log("unknownDMs", unknownDMs)
+    console.log("successfulMemTweets", successfulMemTweets)
 
     //Post process based on successfulness
     if (newestDMDate) {

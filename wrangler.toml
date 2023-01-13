@@ -2,10 +2,10 @@ name = "dmem"
 main = "./dist/index.js"
 #https://developers.cloudflare.com/workers/platform/compatibility-dates/#change-history
 compatibility_date = "2022-11-30"
-account_id = "TODO"
+account_id = "f07920b89f5cd6deeb452fa18077b84e"
 
 kv_namespaces = [
-    { binding = "DMEM_KV", id = "TODO" }
+    { binding = "DMEM_KV", id = "9d2f67f046f846c2a3f9d3e4c84e5ac7", preview_id = "2be5d999cebc441fac6036b7075285c1" }
 ]
 
 # scheduled worker only, so no worker dev deployment is needed
@@ -16,3 +16,9 @@ send_metrics = false
 [triggers]
 #Every five (5) minutes
 crons = [ "*/5 * * * *" ]
+
+# Via `wrangler publish --env production`
+#[env.production]
+#kv_namespaces = [
+#    { binding = "DMEM_KV", id = "9d2f67f046f846c2a3f9d3e4c84e5ac7", preview_id = "2be5d999cebc441fac6036b7075285c1" }
+#]
