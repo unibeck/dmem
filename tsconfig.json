@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"noEmit": true,
+		"target": "es2020",
+		"lib": ["es2020"],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"strict": true,
+		"esModuleInterop": true,
+		"alwaysStrict": true,
+		"preserveConstEnums": true,
+		"sourceMap": true,
+		"allowOverwrite": true,
+		"types": [
+			"@cloudflare/workers-types",
+		]
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "dist", "test"]
+}
