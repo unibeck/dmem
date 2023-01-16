@@ -1,5 +1,6 @@
 name = "dmem"
-main = "./dist/index.js"
+#main = "./dist/index.js"
+main = "./src/index.ts"
 #https://developers.cloudflare.com/workers/platform/compatibility-dates/#change-history
 compatibility_date = "2022-11-30"
 account_id = "f07920b89f5cd6deeb452fa18077b84e"

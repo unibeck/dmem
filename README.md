@@ -44,10 +44,19 @@ wrangler secret put TWITTER_BEARER_TOKEN
 wrangler publish --env production
 ```
 
-## Testing
-First, create and fill out a `.dev.vars` file using the `.dev.vars.example` file as a template.
+## Tests
+The test suite is based on the latest guidance from Cloudflare found here https://blog.cloudflare.com/miniflare-and-workerd/ 
+and here https://github.com/cloudflare/templates/blob/main/worker-typescript/src/index.test.ts. Might look into https://miniflare.dev/testing/vitest
 
-Then, run the following command:
+### Test Suite
+```bash
+NODE_OPTIONS=--experimental-vm-modules npx vitest run
+```
+
+### Testing Locally
+1) Create and fill out a `.dev.vars` file using the `.dev.vars.example` file as a template.
+
+2) Start up the local worker and environment
 ```bash
 wrangler dev --test-scheduled
 curl "http://localhost:8787/__scheduled?cron=*+*+*+*+*"
